@@ -6,7 +6,12 @@ class CropsController < ApplicationController
 
   def create
     @crop = Crop.create(crop_params)
-    render :new
+    if @crop.valid?
+      redirect_to @crop
+    else
+      render :new
+    end
+
   end
 
   def show

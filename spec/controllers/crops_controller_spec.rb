@@ -22,11 +22,12 @@ describe CropsController, type: :controller do
 
   describe '#create' do
 
-    before do
-      post :create, crop:{description: 'smells heavenly'}
-    end
-
     describe 'when the crop is not valid' do
+
+      before do
+        post :create, crop:{description: 'smells heavenly'}
+      end
+
       it 'assigns the new note' do
         expect(assigns[:crop]).to be_new_record
       end
@@ -39,6 +40,13 @@ describe CropsController, type: :controller do
 
     describe 'when the crop is valid' do
 
+      before do
+        post :create, crop:{name: 'indian paintbrush', description: 'smells heavenly'}
+      end
+
+      it 'redirects to #show' do
+        expect(response).to redirect_to assigns[:crop]
+      end
     end
 
   end
