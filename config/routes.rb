@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get  'homes/show' => 'homes#show'
 
   resources :crops
+
+  root 'homes#show'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

@@ -18,7 +18,50 @@ describe CropsController, type: :controller do
       expect(n).to be_a(Crop)
       expect(n).to be_new_record
     end
+  end
 
+  describe '#create' do
+
+    before do
+      post :create, crop:{description: 'smells heavenly'}
+    end
+
+    describe 'when the crop is not valid' do
+      it 'assigns the new note' do
+        expect(assigns[:crop]).to be_new_record
+      end
+
+      it 'redirects to new' do
+        expect(response).to have_rendered(:new)
+      end
+
+    end
+
+    describe 'when the crop is valid' do
+
+    end
+
+  end
+
+  describe '#show' do
+
+    let(:crop){
+       Crop.create! name:'perilla', description:'minty fresh'
+     }
+
+    before do
+      get :show, id:crop.id
+    end
+
+    it 'works' do
+      expect(response).to be_success
+    end
+
+    it 'shows the crop' do
+      n = assigns[:crop]
+      expect(n).to be_present
+      expect(n).to be_a(Crop)
+    end
 
   end
 
