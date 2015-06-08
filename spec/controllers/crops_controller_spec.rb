@@ -73,4 +73,23 @@ describe CropsController, type: :controller do
 
   end
 
+  describe '#index' do
+    let(:first_crop){ Crop.create! name:'one'}
+
+    let(:second_crop){ Crop.create! name:'two'}
+
+    before do
+      get :index
+    end
+
+    it 'works' do
+      expect(response).to be_success
+    end
+
+    it 'builds a list of notes' do
+      n = assigns[:crops]
+      expect(n).to eq([first_crop, second_crop])
+    end
+  end
+
 end

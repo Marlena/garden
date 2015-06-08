@@ -11,11 +11,14 @@ class CropsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def show
     @crop = Crop.find(params[:id])
+  end
+
+  def index
+    @crops = Crop.all
   end
 
   private
