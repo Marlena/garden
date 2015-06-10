@@ -13,22 +13,22 @@ describe CropsController, type: :controller do
     end
 
     it 'builds a crop' do
-      n = assigns[:crop]
-      expect(n).to be_present
-      expect(n).to be_a(Crop)
-      expect(n).to be_new_record
+      c = assigns[:crop]
+      expect(c).to be_present
+      expect(c).to be_a(Crop)
+      expect(c).to be_new_record
     end
   end
 
   describe '#create' do
 
-    describe 'when the crop is not valid' do
+    describe 'when the crop is not valid' do^
 
       before do
         post :create, crop:{description: 'smells heavenly'}
       end
 
-      it 'assigns the new note' do
+      it 'assigns the new crop' do
         expect(assigns[:crop]).to be_new_record
       end
 
@@ -45,6 +45,7 @@ describe CropsController, type: :controller do
       end
 
       it 'redirects to #show' do
+        expect(assigns[:crop]).to be_new_record
         expect(response).to redirect_to assigns[:crop]
       end
     end
@@ -86,9 +87,9 @@ describe CropsController, type: :controller do
       expect(response).to be_success
     end
 
-    it 'builds a list of notes' do
-      n = assigns[:crops]
-      expect(n).to eq([first_crop, second_crop])
+    it 'builds a list of crops' do
+      c = assigns[:crops]
+      expect(c).to eq([first_crop, second_crop])
     end
   end
 

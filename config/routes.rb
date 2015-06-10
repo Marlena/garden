@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   get  'homes/show' => 'homes#show'
 
+  get 'homes/index' => 'crops#index'
+
+  get 'homes' => 'crops#index'
+
   resources :crops
 
   root 'homes#show'
