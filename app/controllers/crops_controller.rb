@@ -25,6 +25,10 @@ class CropsController < ApplicationController
     @crop = Crop.find(params[:id])
   end
 
+  def update
+
+  end
+
   private
 
   def crop_params

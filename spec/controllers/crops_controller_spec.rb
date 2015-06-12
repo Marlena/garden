@@ -112,4 +112,19 @@ describe CropsController, type: :controller do
     end
   end
 
+  describe '#update' do
+
+      let(:crop){Crop.create! name:'basil', description:'great in a salad'}
+
+      it 'has a crop' do
+        put :update, id:crop.id, crop: { name: 'mint'}
+
+        c = assigns[:crop]
+        expect(c).to be_present
+        expect(c).to be_a(Crop)
+        expect(c).to eq(crop)
+      end
+
+  end
+
 end
