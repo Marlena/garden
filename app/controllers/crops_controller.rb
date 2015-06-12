@@ -21,6 +21,10 @@ class CropsController < ApplicationController
     @crops = Crop.all
   end
 
+  def edit
+    @crop = Crop.find(params[:id])
+  end
+
   private
 
   def crop_params
